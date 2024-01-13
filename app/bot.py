@@ -12,7 +12,8 @@ from consts import TELEGRAM_KEY
 
 async def hello_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # TODO write your code here!
-    await update
+    
+    await update.message.reply_text(f"Hello there. {update.message.from_user.id}|{update.message.from_user.full_name}")
 
 if __name__ == "__main__":
     print("Starting bot")
