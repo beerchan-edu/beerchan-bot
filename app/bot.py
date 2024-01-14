@@ -10,9 +10,8 @@ from telegram.ext import (
 from consts import TELEGRAM_KEY
 
 
-async def hello_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    # TODO write your code here!
-    await update
+async def hello_command(update: Update, context: ContextTypes.DEFAULT_TYPE):   
+    await update.message.reply_text(f"Hi {update.effective_user.name}!")
 
 if __name__ == "__main__":
     print("Starting bot")
