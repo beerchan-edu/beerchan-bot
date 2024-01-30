@@ -20,15 +20,15 @@ if __name__ == "__main__":
     print("Starting bot")
     app = Application.builder().token(TELEGRAM_KEY).build()
 
+    # Connection to db and creating table
+    engine = db_connect()
+    Base.metadata.create_all(engine)
+
+    # Creating session
+    session = create_session(engine)
+
     # commands
     app.add_handler(CommandHandler("hello", hello_command))
 
     print("Polling")
     app.run_polling(poll_interval=3)
-
-# Connection to db and creating table
-# engine = db_connect()
-# Base.metadata.create_all(engine)
-
-# Creating session
-# session = create_session(engine)
