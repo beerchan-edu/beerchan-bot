@@ -1,34 +1,45 @@
-import os
-
-from typing import Final
-from telegram import Update
+from asyncio import run
+from command_handler import hello_command, save_message, test_result
+from db import async_engine, Base
 from telegram.ext import (
     Application,
     CommandHandler,
-    ContextTypes,
 )
 from consts import TELEGRAM_KEY
 
-from .db import Base, db_connect, create_session 
-from .models import Sport 
+async def create_tables():
+    async with async_engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
 
+async def main():
+    print("Creating tables")
+    await create_tables()
 
-async def hello_command(update: Update, context: ContextTypes.DEFAULT_TYPE):   
-    await update.message.reply_text(f"Hi {update.effective_user.name}!")
-
-if __name__ == "__main__":
     print("Starting bot")
     app = Application.builder().token(TELEGRAM_KEY).build()
 
-    # Connection to db and creating table
-    engine = db_connect()
-    Base.metadata.create_all(engine)
-
-    # Creating session
-    session = create_session(engine)
-
-    # commands
     app.add_handler(CommandHandler("hello", hello_command))
+    app.add_handler(CommandHandler("insert", save_message))
+    app.add_handler(CommandHandler("result", test_result))
 
     print("Polling")
     app.run_polling(poll_interval=3)
+
+
+if __name__ == "__main__":
+    run(main())
+    # print("Starting bot")
+    # app = Application.builder().token(TELEGRAM_KEY).build()
+
+    # # # run(create_tables())
+    # # Base.metadata.create_all(async_engine)
+
+    # # commands
+    # app.add_handler(CommandHandler("hello", hello_command))
+    # app.add_handler(CommandHandler("insert", save_message))
+    # app.add_handler(CommandHandler("result", test_result))
+
+    # print("Polling")
+    # app.run_polling(poll_interval=3)
+
+

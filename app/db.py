@@ -1,23 +1,19 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncAttrs, AsyncSession
+from sqlalchemy.orm import DeclarativeBase
 from dotenv import dotenv_values
-
-Base = declarative_base()
-
-def db_connect():    #Connetcion to database from docker container  
-# with psql  from .env values (using same vaules from docker-compose.yml)
-    config = dotenv_values("./.env")
-    username = config.get("DB_USERNAME")
-    password = config.get("DB_PASSWORD")
-    dbname = config.get("DB_NAME")
-
-    engine = create_engine(f"postgresql+psycopg://{username}:{password}@localhost:5432/{dbname}", echo=True)
-    connection = engine.connect()
-
-    return engine, connection
+from sqlalchemy.pool import NullPool
 
 
+config = dotenv_values("./.env")
+username = config.get("DB_USERNAME")
+password = config.get("DB_PASSWORD")
+dbname = config.get("DB_NAME")
+DATABASE_URL = f"postgresql+asyncpg://{username}:{password}@localhost:5432/{dbname}"
 
-def create_session(engine): #Creating session for entering the database
-    Session = sessionmaker(bind=engine)
-    return Session()
+
+class Base(AsyncAttrs, DeclarativeBase):
+    pass
+
+
+async_engine = create_async_engine(DATABASE_URL, poolclass=NullPool, echo=True)
+async_session = async_sessionmaker(async_engine, class_=AsyncSession, expire_on_commit=False)
