@@ -8,5 +8,6 @@ services:
     environment:
       - POSTGRES_PASSWORD=root
       - POSTGRES_USER=admin
+      - POSTGRES_DB=sports_db
     image: postgres:15.5-alpine
     
