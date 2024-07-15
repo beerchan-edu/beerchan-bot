@@ -15,3 +15,9 @@ to connect postgres database, you need:
 TELEGRAM_KEY=YOUR_BOT_TELEGRAM_KEY
 ```
 4. run bot via terminal `python app/bot.py`
+
+### TODO:
+1. Make a beautiful readme file
+2. Create tests on github
+3. Create a dockerfile
+4. Run bot on some host
