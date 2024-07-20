@@ -10,6 +10,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Configure Git to use HTTPS
+      run: |
+        git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "git@github.com:"
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -20,10 +24,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pytest
-
-    - name: Configure Git to use HTTPS
-      run: |
-        git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
 
     - name: Install package in editable mode
       run: |
