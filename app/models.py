@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Interval, DateTime
-from db import Base
+from app.db import Base
 from sqlalchemy.sql import func
 from sqlalchemy import select
 from datetime import datetime, timedelta

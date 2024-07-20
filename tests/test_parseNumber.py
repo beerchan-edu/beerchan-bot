@@ -1,9 +1,9 @@
-from command_handler import parseNumber
+from app.command_handler import parseNumber
 import pytest
 
 
 def test_parseNumber_single_digit():
-    dict = {
+    test_case = {
         "I made workout for 5 mins": 5,
         "57 minutes": 57,
         "I made workout for575mins": 575,
@@ -11,5 +11,5 @@ def test_parseNumber_single_digit():
         "Sentense without digits": False,
         "1 hour 30 mins": False,
     }
-    for k, v in dict.items():
+    for k, v in test_case.items():
         assert parseNumber(k) == v
