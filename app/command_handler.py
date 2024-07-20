@@ -1,5 +1,5 @@
-from db import Session
-from models import Sport
+from app.db import Session
+from app.models import Sport
 from telegram import Update
 from telegram.ext import ContextTypes
 import re

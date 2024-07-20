@@ -5,7 +5,7 @@ from command_handler import (
     show_best_sportsman,
     update_username,
 )
-from db import engine, Base, Session
+from app.db import engine, Base, Session
 from telegram.ext import (
     Application,
     CommandHandler,
