@@ -6,7 +6,6 @@ setup(
     packages=find_packages(),
     install_requires=[
         "anyio==4.2.0",
-        "beerchan_bot @ git+https://github.com/beerchan-edu/beerchan-bot.git@a8c796cf7a24a80b3897b1e4b6bfc055c47f9200",
         "certifi==2023.11.17",
         "exceptiongroup==1.2.0",
         "greenlet==3.0.3",
@@ -26,8 +25,5 @@ setup(
         "SQLAlchemy==2.0.25",
         "tomli==2.0.1",
         "typing_extensions==4.9.0",
-    ],
-    dependency_links=[
-        "https://github.com/beerchan-edu/beerchan-bot.git"
     ],
 )

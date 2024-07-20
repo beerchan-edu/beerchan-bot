@@ -1,5 +1,4 @@
 anyio==4.2.0
--e git+https://github.com/beerchan-edu/beerchan-bot.git@a8c796cf7a24a80b3897b1e4b6bfc055c47f9200#egg=beerchan_bot
 certifi==2023.11.17
 exceptiongroup==1.2.0
 greenlet==3.0.3

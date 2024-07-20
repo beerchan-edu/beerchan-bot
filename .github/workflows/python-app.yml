@@ -10,10 +10,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Configure Git to use HTTPS
-      run: |
-        git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "git@github.com:"
-
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -24,6 +20,13 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pytest
+
+    - name: Clone beerchan_bot repository and install dependencies
+      run: |
+        git clone https://github.com/beerchan-edu/beerchan-bot.git beerchan_bot
+        cd beerchan_bot
+        git checkout a8c796cf7a24a80b3897b1e4b6bfc055c47f9200
+        pip install -r requirements.txt
 
     - name: Install package in editable mode
       run: |
