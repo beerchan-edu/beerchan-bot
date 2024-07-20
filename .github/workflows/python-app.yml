@@ -25,7 +25,6 @@ jobs:
       run: |
         git clone https://github.com/beerchan-edu/beerchan-bot.git beerchan_bot
         cd beerchan_bot
-        git checkout a8c796cf7a24a80b3897b1e4b6bfc055c47f9200
         pip install -r requirements.txt
 
     - name: Install package in editable mode
