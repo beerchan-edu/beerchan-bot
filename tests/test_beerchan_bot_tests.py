@@ -20,7 +20,7 @@ def test_parseNumber():
         "5 10 15 375": False
     }
     for input_text, expected_output in test_cases.items():
-        assert cmd_handler.parseNumber(input_text) == expected_output
+        assert cmd_handler.parse_number(input_text) == expected_output
 
 
 @pytest.mark.asyncio
@@ -37,7 +37,7 @@ async def test_help_command():
         "/start - Start the bot and get a welcome message\n"
         "/help - Get information about available commands\n"
         "/save <message> - Save your workout message (duration in minutes)\n"
-        "/best - Show the top sportsmen for the last 30 days\n"
+        "/top - Show the top sportsmen for the last 30 days\n"
     )
     update.message.reply_text.assert_called_once_with(help_text)
 
