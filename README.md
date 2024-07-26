@@ -18,6 +18,6 @@ TELEGRAM_KEY=YOUR_BOT_TELEGRAM_KEY
 
 ### TODO:
 1. Make a beautiful readme file
-2. Create tests on github
-3. Create a dockerfile
-4. Run bot on some host
+2. Create decription on botfather
+3. Create a documentation
+4. Create description of bot in help/start command
