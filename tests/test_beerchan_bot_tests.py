@@ -20,7 +20,7 @@ def test_parseNumber():
         "5 10 15 375": False
     }
     for input_text, expected_output in test_cases.items():
-        assert cmd_handler.parseNumber(input_text) == expected_output
+        assert cmd_handler.parse_number(input_text) == expected_output
 
 
 @pytest.mark.asyncio
