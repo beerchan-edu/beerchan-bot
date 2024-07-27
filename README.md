@@ -60,13 +60,19 @@ docker-compose logs -f bot
 
 ## Application Structure
 
-app/command_handler.py: Contains the command handling logic for the bot.
-app/models.py: Defines the database models.
-app/db.py: Sets up the database connection.
-app/main.py: Entry point for the bot, initializes the bot application and adds command handlers.
-consts.py: Contains constant values such as the Telegram bot token.
-Dockerfile: Defines the Docker image for the bot.
-docker-compose.yml: Defines the Docker services for the bot and PostgreSQL database.
+* app/command_handler.py: Contains the command handling logic for the bot.
+
+* app/models.py: Defines the database models.
+
+* app/db.py: Sets up the database connection.
+
+* app/main.py: Entry point for the bot, initializes the bot application and adds command handlers.
+
+* consts.py: Contains constant values such as the Telegram bot token.
+
+* Dockerfile: Defines the Docker image for the bot.
+
+* docker-compose.yml: Defines the Docker services for the bot and PostgreSQL database.
 
 ## Example Usage
 
