@@ -68,7 +68,7 @@ docker-compose logs -f bot
 
 * app/main.py: Entry point for the bot, initializes the bot application and adds command handlers.
 
-* consts.py: Contains constant values such as the Telegram bot token.
+* config.py: Contains necessary values from .env
 
 * Dockerfile: Defines the Docker image for the bot.
 
