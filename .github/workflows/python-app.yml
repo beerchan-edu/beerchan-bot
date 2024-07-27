@@ -21,12 +21,6 @@ jobs:
         pip install -r requirements.txt
         pip install pytest
 
-    - name: Clone beerchan_bot repository and install dependencies
-      run: |
-        git clone https://github.com/beerchan-edu/beerchan-bot.git beerchan_bot
-        cd beerchan_bot
-        pip install -r requirements.txt
-
     - name: Install package in editable mode
       run: |
         pip install -e .
