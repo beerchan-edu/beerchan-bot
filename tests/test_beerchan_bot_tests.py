@@ -3,7 +3,6 @@ from unittest.mock import AsyncMock, Mock
 import pytest
 
 
-
 def test_parseNumber():
     cmd_handler = CommandHandler()
     test_cases = {
@@ -51,5 +50,14 @@ async def test_hello_command():
     update.message.reply_text = AsyncMock()
 
     await cmd_handler.hello_command(update, context)
-
-    update.message.reply_text.assert_called_once_with("Hi TestUser! I write your workout duration only in minutes.")
+    welcome_message = (
+            f"Hi TestUser! Welcome to the Beerchan Bot.\n\n"
+            "I'm here to help you track and manage your workout durations. You can save your workout time and compete with others in your chat group.\n\n"
+            "Here are some commands to get you started:\n"
+            "/help - Get information about available commands\n"
+            "/save <message> - Save your workout message (duration in minutes)\n"
+            "/top - Show the top sportsmen for the last 30 days in this chat\n\n"
+            "Remember, the top rankings are specific to each chat, so you can compete with your friends and "
+            "see who stays the most active. Let's get started and stay fit together!"
+        )
+    update.message.reply_text.assert_called_once_with(welcome_message)
