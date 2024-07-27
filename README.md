@@ -27,7 +27,7 @@ Beerchan Bot is a Telegram bot designed to help you track and manage your workou
 ### Clone the Repository
 
 ```
-git clone https://github.com/yourusername/beerchan-bot.git
+git clone https://github.com/yourusername/beerchan-bot.git](https://github.com/beerchan-edu/beerchan-bot.git
 cd beerchan-bot
 ```
 
