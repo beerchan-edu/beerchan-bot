@@ -94,7 +94,7 @@ TOP best sportsmen for the last 30 days:
 Contributions are welcome! Please open an issue or submit a pull request on GitHub.
 
 ## License
-This project is licensed under the MIT License.
+This project is licensed under the GNU License.
 
 ## Acknowledgments
 Special thanks to all contributors and third-party resources used in this project.
