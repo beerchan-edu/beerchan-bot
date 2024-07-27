@@ -5,7 +5,7 @@ from telegram.ext import (
     Application,
     CommandHandler,
 )
-from consts import TELEGRAM_KEY
+from app.config import tg_key
 
 
 Base.metadata.create_all(engine)
@@ -24,9 +24,9 @@ def main():
     Main function to start the bot.
     This function initializes the bot application, adds command handlers, and starts polling.
     """
-    print("Starting bot")
+    logger.info()
     
-    app = Application.builder().token(TELEGRAM_KEY).build()
+    app = Application.builder().token(tg_key).build()
 
     app.add_handler(CommandHandler("start", cmd_handler.hello_command))
     app.add_handler(CommandHandler("help", cmd_handler.help_command))
