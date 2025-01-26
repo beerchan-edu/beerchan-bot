@@ -1,9 +1,11 @@
-from app.db import Session
-from app.models import Sport
-from telegram import Update
-from telegram.ext import ContextTypes
 import re
 from datetime import timedelta
+
+from db import Session
+from models import Sport
+from telegram import Update
+from telegram.ext import ContextTypes
+
 
 class CommandHandler:
     """
@@ -86,7 +88,9 @@ class CommandHandler:
                         "Write a command in correct format only in minutes: mm"
                     )
 
-    async def show_best_sportsman(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+    async def show_best_sportsman(
+        self, update: Update, context: ContextTypes.DEFAULT_TYPE
+    ):
         """
         Displays the top sportsmen for the last 30 days in the chat when the /top command is issued.
 
@@ -106,11 +110,15 @@ class CommandHandler:
                         total_seconds = result.total_duration.total_seconds()
                         hours = int(total_seconds // 3600)
                         minutes = int((total_seconds % 3600) // 60)
-                        row_message = f"{number}. {result.nickname} {hours}h {minutes}m\n"
+                        row_message = (
+                            f"{number}. {result.nickname} {hours}h {minutes}m\n"
+                        )
                         result_message += row_message
                     await update.message.reply_text(result_message)
                 else:
-                    await update.message.reply_text("No workout records found for the last 30 days.")
+                    await update.message.reply_text(
+                        "No workout records found for the last 30 days."
+                    )
 
     @staticmethod
     def parse_number(user_string: str):
