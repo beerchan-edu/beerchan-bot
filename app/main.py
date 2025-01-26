@@ -1,9 +1,9 @@
 import logging
 import sys
 
-from command_handler import CommandHandler as TGCommandHandler
-from config import tg_key
-from db import Base, engine
+from app.command_handler import CommandHandler as TGCommandHandler
+from app.config import tg_key
+from app.db import Base, engine
 from telegram.ext import (
     Application,
     CommandHandler,
