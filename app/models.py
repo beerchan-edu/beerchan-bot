@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Interval, DateTime
-from app.db import Base
+from db import Base
 from sqlalchemy.sql import func
 from sqlalchemy import select
 from datetime import datetime, timedelta
@@ -22,14 +22,14 @@ class Sport(Base):
         self.duration = duration
         self.message = message
 
-    @staticmethod
-    def best_query(session, chat_id):
+    @classmethod
+    def best_query(cls, session, chat_id):
         thirty_days_ago = datetime.now() - timedelta(days=30)
         stmt = (
-            select(Sport.nickname, func.sum(Sport.duration).label("total_duration"))
-            .where(Sport.chat_id == chat_id, Sport.created_at >= thirty_days_ago)
-            .group_by(Sport.nickname)
-            .order_by(func.sum(Sport.duration).desc())
+            select(cls.nickname, func.sum(cls.duration).label("total_duration"))
+            .where(cls.chat_id == chat_id, Sport.created_at >= thirty_days_ago)
+            .group_by(cls.nickname)
+            .order_by(func.sum(cls.duration).desc())
             .limit(10)
         )
         return session.execute(stmt)
