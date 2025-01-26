@@ -8,6 +8,18 @@ Beerchan Bot is a Telegram bot designed to help you track and manage your workou
 - View the top sportsmen in your chat group for the last 30 days
 - Simple commands to interact with the bot
 
+## Technical Highlights
+
+-   **Database:** Utilized PostgreSQL to store and manage user records efficiently, leveraging SQLAlchemy for ORM. For example:
+    
+    -   A custom query aggregates workout durations and ranks users with `GROUP BY` and `ORDER BY` for the leaderboard.
+    -   Records are filtered by time range (last 30 days) using `datetime` calculations.
+-   **Docker Integration:** The bot and PostgreSQL database are containerized using Docker, making deployment straightforward. Key features of the `docker-compose.yaml` file:
+    
+    -   Health checks for PostgreSQL using `pg_isready` to ensure the database is ready before the bot starts.
+    -   Dependency management for seamless communication between services.
+-   **Command Handling:** Designed robust Telegram command handlers to parse user input, validate data, and perform CRUD operations in the database.
+
 ## Commands
 
 - `/start` - Start the bot and get a welcome message
